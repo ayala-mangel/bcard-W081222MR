@@ -1,37 +1,44 @@
 import React from "react";
 import MuiCard from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
+import CardHead from "./CardHead";
+import CardInterface from "../../interfaces/CardInterface";
+import CardBody from "./CardBody";
+import CardActionBar from "./CardActionBar";
 
 const Card = () => {
+  const card: CardInterface = {
+    _id: "abcd1",
+    title: "Card Title",
+    subtitle: "Card Subtitle",
+    description: "the card description",
+    phone: "050-000000",
+    image: {
+      url: "https://cdn.pixabay.com/photo/2023/04/15/17/08/bernese-mountain-dog-7928156_640.jpg",
+      alt: "test",
+    },
+    web: "",
+    address: {
+      state: "",
+      country: "israel",
+      city: "tel-aviv",
+      street: "nahson",
+      houseNumber: 5,
+      zip: 1234,
+    },
+    bizNumber: 1000000,
+    email: "test@gmail.com",
+    likes: [],
+    user_id: "123456789",
+    createdAt: new Date(),
+  };
+
   return (
     <MuiCard sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        height="194"
-        image="https://cdn.pixabay.com/photo/2023/04/02/09/15/sempervivum-7894111_960_720.jpg"
-        alt="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-      </CardActions>
+      <CardHead image={card.image} />
+
+      <CardBody card={card} />
+
+      <CardActionBar />
     </MuiCard>
   );
 };
