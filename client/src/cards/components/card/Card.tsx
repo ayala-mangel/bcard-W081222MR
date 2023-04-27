@@ -7,16 +7,17 @@ import CardActionBar from "./CardActionBar";
 
 type Props = {
   card: CardInterface;
+  onDelete: (x: string) => void;
 };
 
-const Card: React.FC<Props> = ({ card }) => {
+const Card: React.FC<Props> = ({ card, onDelete }) => {
   return (
     <MuiCard sx={{ minWidth: 280 }}>
       <CardHead image={card.image} />
 
       <CardBody card={card} />
 
-      <CardActionBar />
+      <CardActionBar onDelete={onDelete} cardId={card._id} />
     </MuiCard>
   );
 };

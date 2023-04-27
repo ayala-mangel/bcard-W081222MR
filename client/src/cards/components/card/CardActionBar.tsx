@@ -7,11 +7,16 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import CallIcon from "@mui/icons-material/Call";
 
-const CardActionBar = () => {
+type Props = {
+  onDelete: (x: string) => void;
+  cardId: string;
+};
+
+const CardActionBar: React.FC<Props> = ({ onDelete, cardId }) => {
   return (
     <CardActions disableSpacing sx={{ pt: 0, justifyContent: "space-between" }}>
       <Box>
-        <IconButton aria-label="delete card">
+        <IconButton onClick={() => onDelete(cardId)} aria-label="delete card">
           <DeleteIcon />
         </IconButton>
 

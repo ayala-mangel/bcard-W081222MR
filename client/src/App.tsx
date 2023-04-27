@@ -6,6 +6,7 @@ import ConditionalRendering from "./sandbox/conditional-rendering/ConditionalRen
 import OnClick from "./sandbox/events/OnClick";
 import RaisingEvents from "./sandbox/events/RaisingEvents";
 import Cards from "./cards/components/Cards";
+import CardsPage from "./cards/pages/CardsPage";
 // import FatherPropsString from "./sandbox/props/props-string/FatherPropsString";
 // import FatherPropsObject from "./sandbox/props/props-object/FatherPropsObject";
 // import FatherPropsTwoKeys from "./sandbox/props/props-two-keys/FatherPropsTwoKeys";
@@ -39,9 +40,10 @@ function App() {
       {/* <PropsTs /> */}
       {/* <Loops /> */}
       {/* <ConditionalRendering /> */}
-      <Cards />
+      {/* <Cards /> */}
       {/* <OnClick /> */}
       {/* <RaisingEvents /> */}
+      <CardsPage />
     </div>
   );
 }
