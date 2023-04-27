@@ -1,9 +1,15 @@
-import React from "react";
+import React, { MouseEvent } from "react";
 import Button from "@mui/material/Button";
 
-/********* onClich no arguments **********/
+/********* onClick no arguments **********/
 // const OnClick = () => {
 //   const handleClick = () => console.log("you clicked!!!");
+
+//   // return (
+//   //   <div className="cursor" onClick={handleClick}>
+//   //     click me!
+//   //   </div>
+//   // );
 
 //   return (
 //     <Button variant="outlined" sx={{ m: 2 }} onClick={handleClick}>
@@ -12,42 +18,34 @@ import Button from "@mui/material/Button";
 //   );
 // };
 
-/********* onClich with arguments **********/
+/********* onClick with arguments **********/
 // const OnClick = () => {
-//   const handleClick = (text) => console.log(text);
+//   const handleClick = (text: string) => console.log(text);
 
 //   return (
 //     <Button
 //       variant="outlined"
 //       sx={{ m: 2 }}
-//       onClick={() => handleClick("hallo")}
-//     >
+//       onClick={() => handleClick("hallo")}>
 //       Click me!!!
 //     </Button>
 //   );
 // };
 
-/********* onClich with arguments **********/
+/********* onClick with events **********/
 const OnClick = () => {
-  const handleClick = (text, e) => {
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     console.log(e.target);
-    console.log(text);
   };
 
   return (
     <>
       <Button variant="outlined" sx={{ m: 2 }} onClick={handleClick}>
-        Click me one!!!
+        Click me
       </Button>
-      <Button variant="outlined" sx={{ m: 2 }} onClick={(e) => handleClick(e)}>
-        Click me two!!!
-      </Button>
-      <Button
-        variant="outlined"
-        sx={{ m: 2 }}
-        onClick={(e) => handleClick("hallo", e)}
-      >
-        Click me three!!!
+
+      <Button variant="outlined" sx={{ m: 2 }} onClick={e => handleClick(e)}>
+        Click me Too!!!
       </Button>
     </>
   );
