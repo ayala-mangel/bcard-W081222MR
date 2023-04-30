@@ -13,6 +13,9 @@ type Props = {
 };
 
 const CardActionBar: React.FC<Props> = ({ onDelete, cardId }) => {
+  const handleEditCard = () =>
+    console.log(`you moved to edit card no: ${cardId}`);
+
   return (
     <CardActions disableSpacing sx={{ pt: 0, justifyContent: "space-between" }}>
       <Box>
@@ -20,7 +23,7 @@ const CardActionBar: React.FC<Props> = ({ onDelete, cardId }) => {
           <DeleteIcon />
         </IconButton>
 
-        <IconButton aria-label="edit card">
+        <IconButton onClick={handleEditCard} aria-label="edit card">
           <EditIcon />
         </IconButton>
       </Box>

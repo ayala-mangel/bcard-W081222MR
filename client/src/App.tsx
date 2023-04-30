@@ -7,6 +7,12 @@ import OnClick from "./sandbox/events/OnClick";
 import RaisingEvents from "./sandbox/events/RaisingEvents";
 import Cards from "./cards/components/Cards";
 import CardsPage from "./cards/pages/CardsPage";
+import UseState from "./sandbox/use-state/UseState";
+import UseStateWithFunction from "./sandbox/use-state/UseStateWithFunction";
+import UseStateWithObject from "./sandbox/use-state/UseStateWithObject";
+import UseStateWithArrayOfObjects from "./sandbox/use-state/UseStateWithArrayOfObjects";
+import AboutPage from "./pages/AboutPage";
+import ErrorPage from "./pages/ErrorPage";
 // import FatherPropsString from "./sandbox/props/props-string/FatherPropsString";
 // import FatherPropsObject from "./sandbox/props/props-object/FatherPropsObject";
 // import FatherPropsTwoKeys from "./sandbox/props/props-two-keys/FatherPropsTwoKeys";
@@ -43,7 +49,13 @@ function App() {
       {/* <Cards /> */}
       {/* <OnClick /> */}
       {/* <RaisingEvents /> */}
-      <CardsPage />
+      {/* <CardsPage /> */}
+      {/* <UseState /> */}
+      {/* <UseStateWithFunction /> */}
+      {/* <UseStateWithObject /> */}
+      <UseStateWithArrayOfObjects />
+      {/* <AboutPage /> */}
+      {/* <ErrorPage /> */}
     </div>
   );
 }

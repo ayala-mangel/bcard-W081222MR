@@ -11,6 +11,7 @@ type Props = {
 const Cards: React.FC<Props> = ({ cards }) => {
   const handleDelete = (id: string) =>
     console.log(`You clicked card no: ${id}`);
+
   if (!cards.length)
     return (
       <Typography>
