@@ -15,6 +15,21 @@ const SandboxMenu = () => {
             to={SANDBOX_ROUTES.COMPONENT}
             color="black"
           />
+          <NavItem
+            label="lifecycle hook"
+            to={SANDBOX_ROUTES.LIFECYCLE}
+            color="black"
+          />
+          <NavItem
+            label="custom hooks"
+            to={SANDBOX_ROUTES.CUSTOM}
+            color="black"
+          />
+          <NavItem
+            label="memoization"
+            to={SANDBOX_ROUTES.MEMOIZATION}
+            color="black"
+          />
         </Toolbar>
       </AppBar>
 
