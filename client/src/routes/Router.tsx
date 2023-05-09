@@ -25,6 +25,9 @@ import CustomName from "../sandbox/custom-hooks/CustomName";
 import Memoization from "../sandbox/memoization/Memoization";
 import UseCallback from "../sandbox/memoization/use-callback/UseCallback";
 import UseMemo from "../sandbox/memoization/use-memo/UseMemo";
+import ContextMenu from "../sandbox/context/ContextMenu";
+import A from "../sandbox/context/components/A";
+import SnackExample from "../sandbox/context/SnackExample";
 
 const Router = () => {
   return (
@@ -77,6 +80,10 @@ const Router = () => {
         <Route path={SANDBOX_ROUTES.MEMOIZATION} element={<Memoization />}>
           <Route path={SANDBOX_ROUTES.USECALLBACK} element={<UseCallback />} />
           <Route path={SANDBOX_ROUTES.USEMEMO} element={<UseMemo />} />
+        </Route>
+        <Route path={SANDBOX_ROUTES.CONTEXT} element={<ContextMenu />}>
+          <Route path={SANDBOX_ROUTES.NAME} element={<A />} />
+          <Route path={SANDBOX_ROUTES.SNACK} element={<SnackExample />} />
         </Route>
       </Route>
       <Route path="*" element={<ErrorPage />} />

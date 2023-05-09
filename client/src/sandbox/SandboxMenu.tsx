@@ -30,6 +30,7 @@ const SandboxMenu = () => {
             to={SANDBOX_ROUTES.MEMOIZATION}
             color="black"
           />
+          <NavItem label="context" to={SANDBOX_ROUTES.CONTEXT} color="black" />
         </Toolbar>
       </AppBar>
 
