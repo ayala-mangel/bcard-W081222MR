@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardInterface from "../interfaces/CardInterface";
 import { getCard, getCards } from "../services/cardApi";
 import useAxiosInterceptors from "../../hooks/useAxiosInterceptors";
@@ -41,11 +41,18 @@ const useCards = () => {
     try {
       setLoading(true);
       const card = await getCard(cardId);
+
+      console.log(card);
+
       requestStatus(false, null, null, card);
     } catch (error) {
       if (typeof error === "string") requestStatus(false, error, null, null);
     }
   };
+
+  // useEffect(() => {
+  //   handleGetCard("63dcead7f7cf311313280f49");
+  // }, []);
 
   return { isLoading, error, cards, card, handleGetCards, handleGetCard };
 };

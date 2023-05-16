@@ -31,6 +31,7 @@ const SandboxMenu = () => {
             color="black"
           />
           <NavItem label="context" to={SANDBOX_ROUTES.CONTEXT} color="black" />
+          <NavItem label="form" to={SANDBOX_ROUTES.FORM} color="black" />
         </Toolbar>
       </AppBar>
 

@@ -5,8 +5,8 @@ import { Navigate } from "react-router-dom";
 import ROUTES from "../../routes/routesModel";
 
 const SignupPage = () => {
-  //   const user = false;/
-  const user = true;
+  const user = false;
+  // const user = true;
 
   if (user) return <Navigate replace to={ROUTES.ROOT} />;
 
