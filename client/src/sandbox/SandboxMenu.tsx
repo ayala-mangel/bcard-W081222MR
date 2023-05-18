@@ -2,10 +2,15 @@ import React from "react";
 import AppBar from "@mui/material/AppBar";
 import { Toolbar } from "@mui/material";
 import NavItem from "../layout/components/NavItem";
-import { SANDBOX_ROUTES } from "../routes/routesModel";
-import { Outlet } from "react-router-dom";
+import ROUTES, { SANDBOX_ROUTES } from "../routes/routesModel";
+import { Navigate, Outlet } from "react-router-dom";
+import { useUser } from "../users/providers/UserProvider";
 
 const SandboxMenu = () => {
+  const { user } = useUser();
+
+  if (!user || !user.isAdmin) return <Navigate replace to={ROUTES.ROOT} />;
+
   return (
     <>
       <AppBar position="sticky" color="transparent">

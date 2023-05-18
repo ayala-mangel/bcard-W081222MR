@@ -36,6 +36,7 @@ export const MenuProvider: React.FC<Props> = ({ children }) => {
         position="fixed"
         top="70px"
         right="20px"></Box>
+
       {anchorEL && (
         <Menu
           anchorEl={anchorEL}

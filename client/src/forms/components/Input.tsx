@@ -28,10 +28,10 @@ const Input: FC<Props> = ({
   required = true,
   error,
   onInputChange,
-  breakPoints = { xs: 12 },
+  breakPoints,
 }) => {
   return (
-    <Grid item {...breakPoints}>
+    <Grid item xs={12} {...breakPoints}>
       <TextField
         variant={variant}
         label={makeFirstLetterCapital(label)}
