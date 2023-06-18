@@ -12,6 +12,8 @@ const chalk = require("chalk");
 //   res.send({ message: "i ended the req res cycle!!!!" });
 // });
 
+// const fn = (path = "/", cb, ...middleware) => {};
+
 /****** app.use next *****/
 // app.use(
 //   "/",
@@ -78,20 +80,52 @@ const chalk = require("chalk");
 
 /***** response *****/
 /***** res.send *****/
-app.use("/", (req, res) => {
-  res.send("testing!!!!");
-  // res.send({ key: "value" });
-  //   res.send(["one", "two", "three"]);
-  //   res.send(false); // ממיר למרוזת תווים
-  //   res.send(503); // הוא חושב שאני מנסה לשלוח סטאטוס קוד
-  //   res.send(null);
-});
+// app.use("/", (req, res) => {
+//   res.send("testing!!!!");
+// res.send({ key: "value" });
+//   res.send(["one", "two", "three"]);
+//   res.send(false); // ממיר למרוזת תווים
+//   res.send(503); // הוא חושב שאני מנסה לשלוח סטאטוס קוד
+//   res.send(null);
+// });
+
+// app.use((req, res) => {
+// res.json({ key: "value" });
+// res.json("text");
+// res.json(false);
+// });
 
 /***** res.status *****/
 // app.use((req, res) => {
 //   console.log("in req status!");
 //   res.status(401).send("end cycle!");
 // });
+
+/***** request *****/
+
+// app.use("/headers", (req, res) => {
+//   const headers = req.headers;
+//   res.send(headers);
+// });
+
+// app.use("/params/:david", (req, res) => {
+//   const params = req.params;
+//   res.send(params);
+// });
+
+// app.use("/query-params", (req, res) => {
+//   const query_params = req.query;
+//   res.send(query_params);
+// });
+
+// const test = (req, res, next) => {
+//   console.log("in req body!!!!");
+//   const body = req.body;
+//   // res.send(body);
+//   next();
+// };
+
+// app.use(test);
 
 const PORT = 9191;
 app.listen(PORT, () => {
