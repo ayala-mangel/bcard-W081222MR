@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CardInterface from "../interfaces/CardInterface";
-import { getCard, getCards } from "../services/cardApi";
+import { changeLikeStatus, getCard, getCards } from "../services/cardApi";
 import useAxiosInterceptors from "../../hooks/useAxiosInterceptors";
 
 type ErrorType = null | string;
@@ -41,20 +41,31 @@ const useCards = () => {
     try {
       setLoading(true);
       const card = await getCard(cardId);
-
-      console.log(card);
-
       requestStatus(false, null, null, card);
     } catch (error) {
       if (typeof error === "string") requestStatus(false, error, null, null);
     }
   };
 
-  // useEffect(() => {
-  //   handleGetCard("63dcead7f7cf311313280f49");
-  // }, []);
+  const handleLikeCard = async (cardId: string) => {
+    try {
+      const card = await changeLikeStatus(cardId);
+      requestStatus(false, null, cards, card);
+    } catch (error) {
+      if (typeof error === "string")
+        return requestStatus(false, error, null, null);
+    }
+  };
 
-  return { isLoading, error, cards, card, handleGetCards, handleGetCard };
+  return {
+    isLoading,
+    error,
+    cards,
+    card,
+    handleGetCards,
+    handleGetCard,
+    handleLikeCard,
+  };
 };
 
 export default useCards;

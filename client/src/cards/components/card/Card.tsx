@@ -24,7 +24,7 @@ const Card: React.FC<Props> = ({ card, onDelete }) => {
         <CardBody card={card} />
       </CardActionArea>
 
-      <CardActionBar onDelete={onDelete} cardId={card._id} />
+      <CardActionBar onDelete={onDelete} card={card} />
     </MuiCard>
   );
 };

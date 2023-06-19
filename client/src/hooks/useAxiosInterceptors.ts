@@ -10,8 +10,6 @@ const useAxiosInterceptors = () => {
   useEffect(() => {
     axios.defaults.headers.common["x-auth-token"] = token;
     axios.interceptors.request.use(data => {
-      console.log(data);
-
       return Promise.resolve(data);
     }, null);
 
