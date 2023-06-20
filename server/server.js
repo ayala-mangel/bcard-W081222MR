@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
 const chalk = require("chalk");
+const router = require("./router/router");
+const cors = require("./cors/cors");
 
+app.use(cors);
+app.use(router);
 app.use(express.static("./public"));
 
 const PORT = 8181;
