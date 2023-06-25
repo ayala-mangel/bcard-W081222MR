@@ -20,11 +20,11 @@
 
       const getData = async () => {
         try {
-          const data = await fetch("http://127.0.0.1:8181");
-          const { message } = await data.json();
-          return resultMessages(message);
+          const rawData = await fetch("http://127.0.0.1:8181/cards");
+          const data = await rawData.json();
+          return resultMessages(JSON.stringify(data));
         } catch (err) {
-          resultMessages(err.message);
+          resultMessages(`Error: ${err.message}`);
         }
       };
 

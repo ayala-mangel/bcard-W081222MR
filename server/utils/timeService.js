@@ -18,5 +18,11 @@ const morganTime = () => {
   return `[${year}/${month}/${day} ${hours}:${minutes}:${seconds}]`;
 };
 
+const morganDay = () => {
+  const { year, month, day } = currentTime();
+  return `${year}-${month}-${day}`;
+};
+
 exports.currentTime = currentTime;
 exports.morganTime = morganTime;
+exports.morganDay = morganDay;

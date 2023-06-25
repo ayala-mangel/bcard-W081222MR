@@ -1,22 +1,27 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const chalk = require("chalk");
 
-// const controller = (req, res, next) => {
-//   console.log("in cors controller");
-//   const isDenied = req.denied;
-//   if (isDenied) return res.status(403).send("stop!!!");
-//   next();
-// };
+const authorizedAPIs = ["http://127.0.0.1:3000", "http://127.0.0.1:5500"];
 
-const authorized_sources = ["http://127.0.0.1:3000", "http://127.0.0.1:5500"];
-
-const corsOptions = {
-  origin: authorized_sources,
-  code: 200,
+const options = (req, callback) => {
+  console.log("in cors: ", req.headers.origin);
+  const isExist = authorizedAPIs.find(api => api === req.headers.origin);
+  if (!isExist)
+    return callback(
+      // error message
+      chalk.redBright(
+        `CORS Error: the API ${req.headers.origin} is an Unauthorized API`
+      ),
+      {
+        // CORS
+        origin: false,
+      }
+    );
+  callback(null, { origin: true });
 };
 
-// app.use(cors(corsOptions), controller);
-app.use(cors(corsOptions));
+app.use(cors(options));
 
 module.exports = app;

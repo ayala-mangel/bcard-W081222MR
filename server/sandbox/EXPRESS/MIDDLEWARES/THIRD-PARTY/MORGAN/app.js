@@ -2,6 +2,11 @@ const express = require("express");
 const app = express();
 const chalk = require("chalk");
 const morgan = require("morgan");
+const cors = require("cors");
+const fs = require("fs");
+const path = require("path");
+
+app.use(cors());
 
 // app.use(morgan("tiny"));
 // app.use(morgan("dev"));
@@ -12,29 +17,26 @@ const morgan = require("morgan");
 //   )
 // );
 
-app.use(
-  morgan((tokens, req, res) => {
-    // console.log(tokens);
-    if (tokens.method(req, res) === "GET") return "bla bla";
-
-    // return `${tokens.method(req, res)} ${tokens.url(req, res)} ${tokens.status(
-    //   req,
-    //   res
-    // )} ${tokens["response-time"](req, res)} milliseconds`;
-
-    return [
-      tokens.method(req, res),
-      tokens.url(req, res),
-      tokens.status(req, res),
-      tokens.res(req, res, "content-length"),
-      "-",
-      tokens["response-time"](req, res),
-      "ms",
-    ].join(" ");
-  })
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, "access.log"),
+  {
+    flags: "a",
+  }
 );
 
-["/get", "GET"];
+const controller = (tokens, req, res) => {
+  return [
+    tokens.method(req, res),
+    tokens.url(req, res),
+    tokens.status(req, res),
+    tokens.res(req, res, "content-length"),
+    "-",
+    tokens["response-time"](req, res),
+    "ms",
+  ].join(" ");
+};
+
+app.use(morgan(controller, { stream: accessLogStream }));
 
 const PORT = 7171;
 app.listen(PORT, () =>

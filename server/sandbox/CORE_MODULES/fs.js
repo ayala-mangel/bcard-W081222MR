@@ -113,75 +113,75 @@
 
 /********* async **********/
 
-// const { mkdir, writeFile, appendFile } = require("fs/promises");
+const { mkdir, writeFile, appendFile } = require("fs/promises");
 
-// mkdir(`${__dirname}/test`)
-//   .then(() => console.log("Made a new directory successfully!"))
-//   .catch(error => console.log(error.message));
+mkdir(`${__dirname}/test`)
+  .then(() => console.log("Made a new directory successfully!"))
+  .catch(error => console.log(error.message));
 
-// const makeFolderAndFile = async () => {
+const makeFolderAndFile = async () => {
+  try {
+    const isExists = FS.existsSync(`${__dirname}/test`);
+    if (!isExists) await mkdir(`${__dirname}/test`);
+    await writeFile(`${__dirname}/test/testing.txt`, "no!!!!!\n");
+    const isFileExists = FS.existsSync(`${__dirname}/test/testing.txt`);
+    if (!isFileExists)
+      await writeFile(`${__dirname}/test/testing.txt`, "yes!!!!!\n");
+    await appendFile(`${__dirname}/test/testing.txt`, "more data!!!\n");
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+makeFolderAndFile();
+
+/***** Fs EXE-02 *****/
+// const FS = require("fs");
+// const { mkdir, writeFile, readdir, rmdir, unlink } = require("fs/promises");
+
+// const users = [
+//   { name: "yononb", last: "vannuc" },
+//   { name: "david", last: "king" },
+//   { name: "tasd", last: "asdaf" },
+// ];
+
+// const API_URL = `${__dirname}/users`;
+
+// const removeFilesAndFolder = async () => {
 //   try {
-//     const isExists = FS.existsSync(`${__dirname}/test`);
-//     if (!isExists) await mkdir(`${__dirname}/test`);
-//     await writeFile(`${__dirname}/test/testing.txt`, "no!!!!!\n");
-//     const isFileExists = FS.existsSync(`${__dirname}/test/testing.txt`);
-//     if (!isFileExists)
-//       await writeFile(`${__dirname}/test/testing.txt`, "yes!!!!!\n");
-//     await appendFile(`${__dirname}/test/testing.txt`, "more data!!!\n");
+//     const userFiles = await readdir(`${__dirname}/users`); // מערך רק במקרה ואין קבצים ומערך עם שמות הקבצים במידה ויש בנתיב
+//     if (userFiles.length) {
+//       // עושה בדיקה אם יש אורך למערך כי אם לא אני לא רוצה לנסות למחוק קובץ שלא קיים
+//       for (const file of userFiles) {
+//         await unlink(`${API_URL}/${file}`);
+//       }
+//     }
+//     await rmdir(API_URL); // עכשיו אני מוגן מכך שלא אנסה למחוק תיקייה שיש בתוכה קבצים
+//     console.log("Files and folder removed successfully!");
 //   } catch (error) {
 //     console.log(error.message);
 //   }
 // };
 
-// makeFolderAndFile();
+// const makeAndRemoveFilesAndFolder = async () => {
+//   try {
+//     const isExist = FS.existsSync(`${__dirname}/users`);
+//     if (isExist) await removeFilesAndFolder();
 
-/***** Fs EXE-02 *****/
-const FS = require("fs");
-const { mkdir, writeFile, readdir, rmdir, unlink } = require("fs/promises");
+//     await mkdir(API_URL);
 
-const users = [
-  { name: "yononb", last: "vannuc" },
-  { name: "david", last: "king" },
-  { name: "tasd", last: "asdaf" },
-];
+//     for (const user of users) {
+//       await writeFile(
+//         `${API_URL}/${user.name}-${user.last}.txt`,
+//         `${user.name} ${user.last}`
+//       );
+//     }
+//     console.log("made files and folder!");
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// };
 
-const API_URL = `${__dirname}/users`;
+// makeAndRemoveFilesAndFolder();
 
-const removeFilesAndFolder = async () => {
-  try {
-    const userFiles = await readdir(`${__dirname}/users`); // מערך רק במקרה ואין קבצים ומערך עם שמות הקבצים במידה ויש בנתיב
-    if (userFiles.length) {
-      // עושה בדיקה אם יש אורך למערך כי אם לא אני לא רוצה לנסות למחוק קובץ שלא קיים
-      for (const file of userFiles) {
-        await unlink(`${API_URL}/${file}`);
-      }
-    }
-    await rmdir(API_URL); // עכשיו אני מוגן מכך שלא אנסה למחוק תיקייה שיש בתוכה קבצים
-    console.log("Files and folder removed successfully!");
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
-const makeAndRemoveFilesAndFolder = async () => {
-  try {
-    const isExist = FS.existsSync(`${__dirname}/users`);
-    if (isExist) await removeFilesAndFolder();
-
-    await mkdir(API_URL);
-
-    for (const user of users) {
-      await writeFile(
-        `${API_URL}/${user.name}-${user.last}.txt`,
-        `${user.name} ${user.last}`
-      );
-    }
-    console.log("made files and folder!");
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
-makeAndRemoveFilesAndFolder();
-
-setTimeout(() => removeFilesAndFolder(), 15000);
+// setTimeout(() => removeFilesAndFolder(), 15000);

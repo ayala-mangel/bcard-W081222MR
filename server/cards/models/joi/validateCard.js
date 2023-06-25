@@ -42,7 +42,7 @@ const validateCard = card => {
         city: REQUIRED_FIELD,
         street: REQUIRED_FIELD,
         houseNumber: Joi.number().required(),
-        zip: Joi.number().allow(""),
+        zip: Joi.number().required().allow(""),
       })
       .required(),
   });
