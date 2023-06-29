@@ -217,7 +217,7 @@ const deleteItemSchema = new mongoose.Schema({
   date: Date,
 });
 
-const Deleted = mongoose.model("item", deleteItemSchema);
+const Deleted = mongoose.model("deleted", deleteItemSchema);
 
 app.delete("/findByIdAndDelete/:id", async (req, res) => {
   try {
@@ -225,7 +225,7 @@ app.delete("/findByIdAndDelete/:id", async (req, res) => {
     const deletedUserFromDB = await Test.findByIdAndDelete(id);
     if (!deletedUserFromDB) throw new Error("Did not found user with this id");
 
-    const userForArchive = lodash.pick(
+    const normalizedUserForArchive = lodash.pick(
       deletedUserFromDB,
       "first",
       "last",
@@ -234,7 +234,7 @@ app.delete("/findByIdAndDelete/:id", async (req, res) => {
       "isBusiness"
     );
 
-    const archivedTest = new Deleted(userForArchive);
+    const archivedTest = new Deleted(normalizedUserForArchive);
     const archivedFromDB = await archivedTest.save();
     res.send(archivedFromDB);
   } catch (error) {

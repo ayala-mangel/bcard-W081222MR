@@ -4,10 +4,11 @@ const {
   getCard,
   createCard,
 } = require("../controllers/cardsController");
+const auth = require("../../auth/authService");
 const router = express.Router();
 
 router.get("/", getCards);
 router.get("/:cardId", getCard);
-router.post("/", createCard);
+router.post("/", auth, createCard);
 
 module.exports = router;
