@@ -3,8 +3,13 @@ const normalizeCard = require("../helpers/normalizeCard");
 const validateCard = require("../models/joi/validateCard");
 const Card = require("../models/mongoose/Card");
 
-const getCards = (req, res) => {
-  res.send({ message: "in getCards" });
+const getCards = async (req, res) => {
+  try {
+    const cards = await Card.find().sort({ createdAt: "descending" });
+    return res.send(cards);
+  } catch (error) {
+    return handleError(res, 500, `Mongoose Error: ${error.message}`);
+  }
 };
 
 const getCard = (req, res) => {
